@@ -1,0 +1,96 @@
+1. Program -> Decl
+2. Program -> Decl Program
+3. Decl -> Vdecl
+4. Decl -> Fdecl
+5. Decl -> Cdecl
+6. Decl -> Idecl
+7. Vdecl -> Var _semicolon
+8. Var ->Type _id
+9. Lval -> _id LvalR
+10. LvalR -> _leftbracket Expr _rightbracket LvalR
+11. LvalR -> _period LvalR
+12. LvalR -> Empty
+13. Type ->_int TypeR
+14. Type ->_double TypeR
+15. Type ->_boolean TypeR
+16. Type ->_string TypeR
+17. Type ->_id TypeR
+18. TypeR -> _leftbracket _rightbracket TypeR
+19. TypeR -> Empty
+20. Fdecl ->Type _id _leftparen Formals _rightparen StmtBlock
+21. Fdecl -> _void _id _leftparen Formals _rightparen StmtBlock
+22. Formals -> Vlist
+23. Formals -> Empty
+24. Vlist -> Var
+25. Vlist  -> Var _comma Vlist
+26. Empty -> 
+27. Cdecl ->_class _id _lefbrace Field _rightbrace
+28. Cdecl -> _class _id _extends _id _leftbrace Field _rightbrace
+29. Cdecl  -> _class _id _implements IDlist _leftbrace Field _rightbrace
+30. Cdecl -> _class _id _extends _id _implements IDlist _leftbrace Field _rightbrace
+31. Field -> Vdecl Field 
+32. Field  -> Fdecl Field
+33. Field  -> Empty
+34. IDlist -> _id
+35. IDlist  -> _id _comma IDlist
+36. Idecl  -> _interface _id _leftbrace Prototype _rightbrace
+37. Prototype -> Type _id _leftparen Formals _rightparen _semicolon
+38. Prototype  -> _void _id _leftparen Formals _rightparen _semicolon
+39. Prototype  -> Empty
+40. StmtBlock -> _leftbrace VdecKleene StmtKleene _rightbrace
+41. VdecKleene -> VdecKleene Vdecl
+42. VdecKleene -> Empty
+43. StmtKleene  -> Stmt StmtKleene
+44. StmtKleene -> Empty
+45. Stmt -> Expr _semicolon
+46. Stmt -> _semicolon
+47. Stmt -> IfStmt
+48. Stmt -> WhileStmt
+49. Stmt -> ForStmt
+50. Stmt -> BreakStmt
+51. Stmt -> ReturnStmt
+52. Stmt -> PrintStmt
+53. Stmt -> StmtBlock
+54. IfStmt -> _if _leftparen Expr _rightparen Stmt
+55. IfStmt -> _if _leftpraen Expr _rightparen Stmt
+56. WhileStmt -> _while _leftparen Expr _rightparen
+57. ForStmt -> _for _leftparen Expr _semicolon Expr _semicolon Expr _rightparen
+58. ForStmt -> _for _leftparen _semicolon Expr _semicolon Expr _rightparen Stmt
+59. ForStmt -> _for _leftparen Expr _semicolon Expr _semicolon _rightparen Stmt
+60. ForStmt -> _for _leftparen _semicolon Expr _semicolon rightparen Stmt
+61. BreakStmt -> _break 
+62. ReturnStmt ->_return Expr _semicolon
+63. ReturnStmt -> _return _semicolon
+64. Print Stmt -> _println _leftparen ExprList _rightparen _semicolon
+65. ExprList -> Expr
+66. ExprList -> Expr _comma ExprList
+67. Expr -> Lval _assignop Expr
+68. Expr -> Const
+69. Expr -> Lval
+70. Expr -> Call
+71. Expr -> _leftparen Expr
+72. Expr -> Expr _plus Expr
+73. Expr -> Expr _minus Expr
+74. Expr -> Expr _multiplication Expr
+75. Expr -> _division Expr
+76. Expr -> Expr _mod Expr
+77. Expr -> _minus Expr
+78. Expr -> Expr _less Expr
+79. Expr -> Expr _lessequal Expr
+80. Expr -> Expr _greater Expr
+81. Expr -> Expr _greaterequal Expr
+82. Expr -> Expr _equal Expr
+83. Expr -> Expr _notequal Expr
+84. Expr -> Expr _and Expr
+85. Expr -> Expr _or Expr
+86. Expr -> _not Expr
+87. Expr -> _readln _leftparen _rightparen
+88. Expr -> _newarray _leftparen _intconstant _comma Type _rightparen
+89. Call -> _id _leftparen Actuals _rightparen
+90. Call -> _id Period _id _leftparen Actuals _rightparen
+91. Actuals -> ExprList
+92. Actuals -> Empty
+93. Const -> _intconstant
+94. Const -> _doubleconstant
+95. Const -> _stringconstant
+96. Const -> _booleanconstant
